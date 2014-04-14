@@ -1,0 +1,1190 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>Gpucfg</name>
+  <program_name>gpucfg</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
+  <language>C</language>
+  <gnome_support>False</gnome_support>
+  <gettext_support>False</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>CfgWnd</name>
+  <border_width>8</border_width>
+  <signal>
+    <name>destroy</name>
+    <handler>on_CfgWnd_destroy</handler>
+    <last_modification_time>Tue, 13 Nov 2001 16:10:20 GMT</last_modification_time>
+  </signal>
+  <title>P.E.Op.S. MesaGL PSX GPU configuration...</title>
+  <type>GTK_WINDOW_DIALOG</type>
+  <position>GTK_WIN_POS_CENTER</position>
+  <modal>True</modal>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>False</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkFixed</class>
+    <name>fixed1</name>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>btnSave</name>
+      <x>104</x>
+      <y>488</y>
+      <width>160</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <signal>
+	<name>clicked</name>
+	<handler>on_btnSave_clicked</handler>
+	<last_modification_time>Mon, 12 Nov 2001 22:06:51 GMT</last_modification_time>
+      </signal>
+      <label>OK</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmTextures</name>
+      <x>312</x>
+      <y>0</y>
+      <width>360</width>
+      <height>136</height>
+      <label>Textures</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed3</name>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>edtMaxTex</name>
+	  <x>248</x>
+	  <y>80</y>
+	  <width>96</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>0</text_max_length>
+	  <text></text>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label5</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>64</width>
+	  <height>24</height>
+	  <label>Quality:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbQuality</name>
+	  <x>80</x>
+	  <y>0</y>
+	  <width>264</width>
+	  <height>24</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: don't care - Use driver's default textures
+1: 4444 - Fast, but less colorful
+2: 5551 - Nice colors, bad transparency
+3: 8888 - Best colors, more ram needed
+4: BGR8888 - Faster on some cards
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry2</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: don't care - Use driver's default textures</text>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label7</name>
+	  <x>8</x>
+	  <y>80</y>
+	  <width>240</width>
+	  <height>24</height>
+	  <label>VRam size in MBytes (0..1024, 0=auto):</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbFilter</name>
+	  <x>80</x>
+	  <y>24</y>
+	  <width>264</width>
+	  <height>24</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: None
+1: Standard - Glitches will happen
+2: Extended - No black borders
+3: Standard without sprites - unfiltered 2D
+4: Extended without sprites - unfiltered 2D
+5: Standard + smoothed sprites
+6: Extended + smoothed sprites
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry3</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: None</text>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label6</name>
+	  <x>8</x>
+	  <y>24</y>
+	  <width>64</width>
+	  <height>24</height>
+	  <label>Filtering:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label23</name>
+	  <x>8</x>
+	  <y>48</y>
+	  <width>64</width>
+	  <height>24</height>
+	  <label>HiRes Tex:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbHiresTex</name>
+	  <x>80</x>
+	  <y>48</y>
+	  <width>264</width>
+	  <height>22</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: None (standard)
+1: 2xSaI (much vram needed)
+2: Scaled (needs tex filtering)
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry7</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: None (standard)</text>
+	  </widget>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmWindow</name>
+      <x>0</x>
+      <y>0</y>
+      <width>304</width>
+      <height>136</height>
+      <label>Window options</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed2</name>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>edtXSize</name>
+	  <x>56</x>
+	  <y>0</y>
+	  <width>72</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>5</text_max_length>
+	  <text></text>
+	</widget>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>edtYSize</name>
+	  <x>56</x>
+	  <y>32</y>
+	  <width>72</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>0</text_max_length>
+	  <text></text>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label2</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>48</width>
+	  <height>24</height>
+	  <label>Width:</label>
+	  <justify>GTK_JUSTIFY_RIGHT</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label3</name>
+	  <x>8</x>
+	  <y>32</y>
+	  <width>48</width>
+	  <height>24</height>
+	  <label>Height:</label>
+	  <justify>GTK_JUSTIFY_RIGHT</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkKeepRatio</name>
+	  <x>8</x>
+	  <y>88</y>
+	  <width>280</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Keep psx aspect ratio</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFullScreen</name>
+	  <x>176</x>
+	  <y>0</y>
+	  <width>80</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Fullscreen</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkDither</name>
+	  <x>8</x>
+	  <y>64</y>
+	  <width>280</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Dithering</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>btnCancel</name>
+      <x>400</x>
+      <y>488</y>
+      <width>160</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <signal>
+	<name>clicked</name>
+	<handler>on_btnCancel_clicked</handler>
+	<last_modification_time>Tue, 13 Nov 2001 18:37:47 GMT</last_modification_time>
+      </signal>
+      <label>Cancel</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmFPS</name>
+      <x>0</x>
+      <y>136</y>
+      <width>304</width>
+      <height>152</height>
+      <label>Framerate</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed4</name>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>edtFPSlim</name>
+	  <x>160</x>
+	  <y>104</y>
+	  <width>72</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>0</text_max_length>
+	  <text></text>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label8</name>
+	  <x>240</x>
+	  <y>104</y>
+	  <width>40</width>
+	  <height>24</height>
+	  <label>FPS</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkRadioButton</class>
+	  <name>rdbLimMan</name>
+	  <x>32</x>
+	  <y>104</y>
+	  <width>120</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>FPS limit manual</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkShowFPS</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>280</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Show FPS display on startup</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFPSLimit</name>
+	  <x>8</x>
+	  <y>24</y>
+	  <width>280</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Use FPS limit</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkRadioButton</class>
+	  <name>rdbLimAuto</name>
+	  <x>32</x>
+	  <y>80</y>
+	  <width>160</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>FPS limit auto-detection</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFPSSkip</name>
+	  <x>8</x>
+	  <y>48</y>
+	  <width>280</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Use Frame skipping</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmCompat</name>
+      <x>312</x>
+      <y>136</y>
+      <width>360</width>
+      <height>152</height>
+      <label>Compatibility</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed5</name>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkABlend</name>
+	  <x>8</x>
+	  <y>112</y>
+	  <width>336</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Advanced blending (Accurate psx color emulation)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label10</name>
+	  <x>0</x>
+	  <y>24</y>
+	  <width>136</width>
+	  <height>24</height>
+	  <label>Framebuffer textures:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label9</name>
+	  <x>0</x>
+	  <y>0</y>
+	  <width>136</width>
+	  <height>24</height>
+	  <label>Offscreen Drawing:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label22</name>
+	  <x>0</x>
+	  <y>48</y>
+	  <width>136</width>
+	  <height>24</height>
+	  <label>Framebuffer access:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkOpaque</name>
+	  <x>8</x>
+	  <y>96</y>
+	  <width>336</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Alpha Multipass (correct opaque texture areas)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkMaskBit</name>
+	  <x>8</x>
+	  <y>80</y>
+	  <width>336</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Mask bit detection (needed by a few games, zbuffer)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbOffscreen</name>
+	  <x>136</x>
+	  <y>0</y>
+	  <width>208</width>
+	  <height>24</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: None - Fastest, most glitches
+1: Minimum - Missing screens
+2: Standard - OK for most games
+3: Enhanced - Shows more stuff
+4: Extended - Causing garbage
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry4</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: None - Fastest, most glitches</text>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbFrameTex</name>
+	  <x>136</x>
+	  <y>24</y>
+	  <width>208</width>
+	  <height>24</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: Emulated vram - Needs FVP
+1: Black - Fast, no effects
+2: Gfx card buffer - Can be slow
+3: Gfx card &amp; soft - slow
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry5</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: Emulated vram - Needs FVP</text>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkCombo</class>
+	  <name>cmbFrameAcc</name>
+	  <x>136</x>
+	  <y>48</y>
+	  <width>208</width>
+	  <height>22</height>
+	  <value_in_list>True</value_in_list>
+	  <ok_if_empty>False</ok_if_empty>
+	  <case_sensitive>False</case_sensitive>
+	  <use_arrows>True</use_arrows>
+	  <use_arrows_always>True</use_arrows_always>
+	  <items>0: Emulated vram - ok most times
+1: Gfx card buffer reads
+2: Gfx card buffer moves
+3: Gfx buffer reads &amp; moves
+4: Full Software (FVP)
+</items>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <child_name>GtkCombo:entry</child_name>
+	    <name>combo-entry6</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text>0: Emulated vram - ok most times</text>
+	  </widget>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmFixes</name>
+      <x>312</x>
+      <y>288</y>
+      <width>360</width>
+      <height>192</height>
+      <label>Special game fixes</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed7</name>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix3</name>
+	  <x>8</x>
+	  <y>72</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>08: Swap front detection</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix4</name>
+	  <x>8</x>
+	  <y>88</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>10: Disable coord check</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix5</name>
+	  <x>8</x>
+	  <y>104</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>20: No blue glitches (LoD)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkGameFixes</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>336</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Use game fixes</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix2</name>
+	  <x>8</x>
+	  <y>56</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>04: Black brightness (Lunar)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix1</name>
+	  <x>8</x>
+	  <y>40</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>02: Direct FB updates</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix7</name>
+	  <x>8</x>
+	  <y>136</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>80: PC fps calculation</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix0</name>
+	  <x>8</x>
+	  <y>24</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>01: Battle cursor (FF7)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix6</name>
+	  <x>8</x>
+	  <y>120</y>
+	  <width>176</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>40: Soft FB access</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix8</name>
+	  <x>8</x>
+	  <y>152</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>100: Old frame skipping</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix9</name>
+	  <x>184</x>
+	  <y>24</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>200: Yellow rect (FF9)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix10</name>
+	  <x>184</x>
+	  <y>40</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>400: No subtr. blending</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix11</name>
+	  <x>184</x>
+	  <y>56</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>800: Lazy upload (DW7)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix12</name>
+	  <x>184</x>
+	  <y>72</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>1000: Odd/even hack</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix13</name>
+	  <x>184</x>
+	  <y>88</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>2000: Adjust screen width</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix14</name>
+	  <x>184</x>
+	  <y>104</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>4000: Old texture filtering</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix15</name>
+	  <x>184</x>
+	  <y>120</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>8000: Additional uploads</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix17</name>
+	  <x>184</x>
+	  <y>152</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>20000: fake 'gpu busy'</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFix16</name>
+	  <x>184</x>
+	  <y>136</y>
+	  <width>168</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>10000: unused</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frmMisc</name>
+      <x>0</x>
+      <y>288</y>
+      <width>304</width>
+      <height>192</height>
+      <label>Misc</label>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed6</name>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>edtScanBlend</name>
+	  <x>232</x>
+	  <y>0</y>
+	  <width>54</width>
+	  <height>22</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>0</text_max_length>
+	  <text></text>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkScanlines</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>80</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <label>Scanlines</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label11</name>
+	  <x>88</x>
+	  <y>0</y>
+	  <width>144</width>
+	  <height>24</height>
+	  <label>Blending (0..255,-1=dot):</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkBlur</name>
+	  <x>8</x>
+	  <y>112</y>
+	  <width>288</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Screen smoothing (can be slow or unsupported)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkExtensions</name>
+	  <x>8</x>
+	  <y>96</y>
+	  <width>272</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Use OpenGL extensions (recommended)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkAntiA</name>
+	  <x>8</x>
+	  <y>80</y>
+	  <width>272</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Polygon anti-aliasing (slow with most cards)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkLinemode</name>
+	  <x>8</x>
+	  <y>64</y>
+	  <width>272</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Line mode (polygons will not get filled)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chkFastMdec</name>
+	  <x>8</x>
+	  <y>32</y>
+	  <width>272</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Unfiltered MDECs (small movie speedup)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>chk15bitMdec</name>
+	  <x>8</x>
+	  <y>48</y>
+	  <width>288</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <label>Force 15 bit framebuffer updates (faster movies)</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	</widget>
+      </widget>
+    </widget>
+  </widget>
+</widget>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>AboutWnd</name>
+  <border_width>12</border_width>
+  <signal>
+    <name>destroy</name>
+    <handler>on_AboutWnd_destroy</handler>
+    <last_modification_time>Wed, 14 Nov 2001 19:13:37 GMT</last_modification_time>
+  </signal>
+  <title>About P.E.Op.S. MesaGL PSX GPU...</title>
+  <type>GTK_WINDOW_DIALOG</type>
+  <position>GTK_WIN_POS_CENTER</position>
+  <modal>True</modal>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>False</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkFixed</class>
+    <name>fixed8</name>
+
+    <widget>
+      <class>GtkButton</class>
+      <name>bntAClose</name>
+      <x>136</x>
+      <y>184</y>
+      <width>88</width>
+      <height>24</height>
+      <can_focus>True</can_focus>
+      <signal>
+	<name>clicked</name>
+	<handler>on_bntAClose_clicked</handler>
+	<last_modification_time>Wed, 14 Nov 2001 19:44:06 GMT</last_modification_time>
+      </signal>
+      <label>OK</label>
+      <relief>GTK_RELIEF_NORMAL</relief>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label13</name>
+      <x>0</x>
+      <y>8</y>
+      <width>360</width>
+      <height>16</height>
+      <label>Coded by: Pete Bernert</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label15</name>
+      <x>0</x>
+      <y>40</y>
+      <width>360</width>
+      <height>16</height>
+      <label>Homepage: http://www.pbernert.com</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label21</name>
+      <x>0</x>
+      <y>136</y>
+      <width>360</width>
+      <height>16</height>
+      <label>Release date: 01.04.2009</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+
+    <widget>
+      <class>GtkLabel</class>
+      <name>label19</name>
+      <x>0</x>
+      <y>104</y>
+      <width>360</width>
+      <height>16</height>
+      <label>Version: 1.78</label>
+      <justify>GTK_JUSTIFY_CENTER</justify>
+      <wrap>False</wrap>
+      <xalign>0.5</xalign>
+      <yalign>0.5</yalign>
+      <xpad>0</xpad>
+      <ypad>0</ypad>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>

@@ -1,0 +1,7 @@
+How to use this plugin with the Zinc emulator:
+----------------------------------------------
+
+Start ZiNc with a command line like this one to run the OpenGL renderer:
+
+./zinc 2 --renderer=/home/pete/zinc/libgpuPeopsMesaGL.so.1.0.78 --use-renderer-cfg-file=/home/pete/zinc/gpuPeopsMesaGL.cfg 
+
